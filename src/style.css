@@ -160,6 +160,135 @@ body {
   transition: color 0.2s ease;
 }
 
+/* Caret Icon */
+.cv-caret-icon {
+  margin-left: 6px;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.25s ease;
+}
+
+.cv-dropdown-wrap {
+  position: relative;
+  display: inline-block;
+  pointer-events: auto;
+}
+
+.cv-dropdown-wrap.is-open .cv-caret-icon {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu Container (Floats above the button on bottom-aligned hero) */
+.cv-dropdown-menu {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  right: 0;
+  width: 220px;
+  background: rgba(14, 14, 20, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  padding: 8px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 0 24px rgba(0, 240, 255, 0.08);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px) scale(0.96);
+  transform-origin: bottom right;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 50;
+}
+
+.cv-dropdown-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.cv-menu-header {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.35);
+  padding: 4px 8px 8px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  margin-bottom: 4px;
+}
+
+.cv-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: background 0.18s ease, transform 0.15s ease;
+}
+
+.cv-menu-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(2px);
+}
+
+.cv-item-badge {
+  font-family: 'Space Grotesk', 'Inter', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}
+
+.cv-badge-id {
+  background: rgba(239, 68, 68, 0.16);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #f87171;
+}
+
+.cv-badge-en {
+  background: rgba(56, 189, 248, 0.16);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #38bdf8;
+}
+
+.cv-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.cv-item-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.cv-item-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.cv-item-arrow {
+  margin-left: auto;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.3);
+  transition: all 0.18s ease;
+}
+
+.cv-menu-item:hover .cv-item-arrow {
+  color: #ffffff;
+  transform: translateY(2px);
+}
+
 /* Hover State: Pixel Box Shadow + Mosaic Reveal */
 .pixel-cv-btn:hover {
   background: rgba(20, 20, 28, 0.85);

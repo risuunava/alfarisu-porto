@@ -490,20 +490,55 @@ if (cvBtn) {
     }
   });
 
-  // Temporarily disable download action until CV is ready
-  cvBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const label = cvBtn.querySelector('.pixel-cv-label');
-    if (label && !cvBtn.dataset.busy) {
-      cvBtn.dataset.busy = 'true';
-      const originalText = label.textContent;
-      label.textContent = 'Coming Soon';
-      setTimeout(() => {
-        label.textContent = originalText;
-        delete cvBtn.dataset.busy;
-      }, 1800);
-    }
-  });
+  // Toggle CV Dropdown Menu
+  const cvDropdownWrap = document.querySelector('.cv-dropdown-wrap');
+  const cvDropdownMenu = document.getElementById('cv-dropdown-menu');
+
+  if (cvDropdownMenu) {
+    cvBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = cvDropdownMenu.classList.contains('is-open');
+      if (isOpen) {
+        cvDropdownMenu.classList.remove('is-open');
+        if (cvDropdownWrap) cvDropdownWrap.classList.remove('is-open');
+        cvBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        cvDropdownMenu.classList.add('is-open');
+        if (cvDropdownWrap) cvDropdownWrap.classList.add('is-open');
+        cvBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!cvDropdownWrap || !cvDropdownWrap.contains(e.target)) {
+        cvDropdownMenu.classList.remove('is-open');
+        if (cvDropdownWrap) cvDropdownWrap.classList.remove('is-open');
+        cvBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close when pressing Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        cvDropdownMenu.classList.remove('is-open');
+        if (cvDropdownWrap) cvDropdownWrap.classList.remove('is-open');
+        cvBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close after clicking an item
+    const menuItems = cvDropdownMenu.querySelectorAll('.cv-menu-item');
+    menuItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        setTimeout(() => {
+          cvDropdownMenu.classList.remove('is-open');
+          if (cvDropdownWrap) cvDropdownWrap.classList.remove('is-open');
+          cvBtn.setAttribute('aria-expanded', 'false');
+        }, 150);
+      });
+    });
+  }
 }
 
 // Adjust on window resize
