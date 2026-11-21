@@ -490,55 +490,42 @@ if (cvBtn) {
     }
   });
 
-  // Toggle CV Dropdown Menu
-  const cvDropdownWrap = document.querySelector('.cv-dropdown-wrap');
-  const cvDropdownMenu = document.getElementById('cv-dropdown-menu');
+  // Direct Download of both CV (ID) & Resume (EN) on click
+  cvBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (cvBtn.dataset.downloading) return;
+    cvBtn.dataset.downloading = 'true';
 
-  if (cvDropdownMenu) {
-    cvBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = cvDropdownMenu.classList.contains('is-open');
-      if (isOpen) {
-        cvDropdownMenu.classList.remove('is-open');
-        if (cvDropdownWrap) cvDropdownWrap.classList.remove('is-open');
-        cvBtn.setAttribute('aria-expanded', 'false');
-      } else {
-        cvDropdownMenu.classList.add('is-open');
-        if (cvDropdownWrap) cvDropdownWrap.classList.add('is-open');
-        cvBtn.setAttribute('aria-expanded', 'true');
-      }
-    });
+    const label = cvBtn.querySelector('.pixel-cv-label');
+    const originalText = label ? label.textContent : 'Download CV';
+    if (label) label.textContent = 'Downloading...';
 
-    // Close when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!cvDropdownWrap || !cvDropdownWrap.contains(e.target)) {
-        cvDropdownMenu.classList.remove('is-open');
-        if (cvDropdownWrap) cvDropdownWrap.classList.remove('is-open');
-        cvBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
+    const triggerDownload = (url, filename) => {
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    };
 
-    // Close when pressing Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        cvDropdownMenu.classList.remove('is-open');
-        if (cvDropdownWrap) cvDropdownWrap.classList.remove('is-open');
-        cvBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
+    // 1. Download cv.alfarisi.pdf (Bahasa Indonesia)
+    triggerDownload('/cv.alfarisi.pdf', 'cv.alfarisi.pdf');
 
-    // Close after clicking an item
-    const menuItems = cvDropdownMenu.querySelectorAll('.cv-menu-item');
-    menuItems.forEach((item) => {
-      item.addEventListener('click', () => {
-        setTimeout(() => {
-          cvDropdownMenu.classList.remove('is-open');
-          if (cvDropdownWrap) cvDropdownWrap.classList.remove('is-open');
-          cvBtn.setAttribute('aria-expanded', 'false');
-        }, 150);
-      });
-    });
-  }
+    // 2. Download resume.alfarisi.pdf (English) with slight delay for browser handling
+    setTimeout(() => {
+      triggerDownload('/resume.alfarisi.pdf', 'resume.alfarisi.pdf');
+    }, 280);
+
+    setTimeout(() => {
+      if (label) label.textContent = 'Downloaded!';
+    }, 650);
+
+    setTimeout(() => {
+      if (label) label.textContent = originalText;
+      delete cvBtn.dataset.downloading;
+    }, 2200);
+  });
 }
 
 // Adjust on window resize
