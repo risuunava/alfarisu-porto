@@ -37,6 +37,9 @@ export class ParticlePortraitScene {
     this.container.appendChild(this.renderer.domElement);
 
     this.portraitGroup = new THREE.Group();
+    if (this.width <= 600) {
+      this.portraitGroup.position.y = 0.75;
+    }
     this.scene.add(this.portraitGroup);
 
     this.raycaster = new THREE.Raycaster();
@@ -382,6 +385,10 @@ export class ParticlePortraitScene {
       this.camera.updateProjectionMatrix();
       this.renderer.setSize(this.width, this.height);
       this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      if (this.portraitGroup) {
+        this.portraitGroup.position.y = (this.width <= 600) ? 0.75 : 0;
+      }
 
       if (this.particleMaterial) {
         this.particleMaterial.uniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2);
