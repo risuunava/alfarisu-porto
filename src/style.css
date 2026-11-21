@@ -1,0 +1,1245 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Press+Start+2P&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,600;1,700;1,800&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #050507;
+  color: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  user-select: none;
+}
+
+/* Three.js Canvas Container (Fixed in background across all horizontal pages) */
+#webgl-canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Horizontal Viewport Container */
+.horizontal-viewport {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  touch-action: pan-x pan-y;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+}
+
+.horizontal-viewport::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari */
+}
+
+/* Each full horizontal page section */
+.page-section {
+  flex: 0 0 100vw;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* =========================================
+   PAGE 1: HERO SECTION
+   ========================================= */
+.hero-page {
+  overflow-y: hidden;
+}
+
+.hero-layout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 24px 18px 24px;
+  pointer-events: none;
+}
+
+/* Meta Row (Left Bio Text + Right Pill Button) */
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 14px;
+  width: 100%;
+  padding: 0 6px;
+}
+
+.bio-text {
+  max-width: 360px;
+  font-size: 13px;
+  line-height: 1.48;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: -0.01em;
+  pointer-events: auto;
+}
+
+.bio-text p {
+  margin: 0;
+}
+
+/* Clean CTA Button with Dynamic Pixel Hover Effect: Download CV */
+.pixel-cv-btn {
+  pointer-events: auto;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  background: rgba(14, 14, 20, 0.65);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 100px;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: visible;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Inner Pixel Mosaic Layer (Activates on Hover) */
+.pixel-cv-mosaic {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    linear-gradient(45deg, rgba(0, 240, 255, 0.35) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 0, 119, 0.35) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(0, 255, 136, 0.35) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(255, 230, 0, 0.35) 75%);
+  background-size: 8px 8px;
+  background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+  mix-blend-mode: screen;
+  transition: opacity 0.2s ease;
+  z-index: 1;
+}
+
+/* Text Label */
+.pixel-cv-label {
+  position: relative;
+  z-index: 2;
+  transition: color 0.2s ease;
+}
+
+/* Hover State: Pixel Box Shadow + Mosaic Reveal */
+.pixel-cv-btn:hover {
+  background: rgba(20, 20, 28, 0.85);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow:
+    3px 3px 0px #00f0ff,
+    -3px -3px 0px #ff0077,
+    0 8px 24px rgba(0, 0, 0, 0.7);
+}
+
+.pixel-cv-btn:hover .pixel-cv-mosaic {
+  opacity: 1;
+  animation: pixelGridPulse 0.4s steps(4) infinite;
+}
+
+@keyframes pixelGridPulse {
+  0% {
+    background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+  }
+
+  50% {
+    background-position: 4px 4px, 4px 0, 0 -4px, 0 4px;
+  }
+
+  100% {
+    background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+  }
+}
+
+.pixel-cv-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #00f0ff;
+}
+
+/* Floating Pixel Particles Emitted on Hover */
+.cv-pixel-particle {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+  image-rendering: pixelated;
+  animation: cvPixelFloat 0.65s steps(6) forwards;
+}
+
+@keyframes cvPixelFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(var(--vx), var(--vy)) scale(0.4);
+    opacity: 0;
+  }
+}
+
+/* Massive Serif Italic Typography at Bottom */
+.name-wrap {
+  width: 100%;
+  pointer-events: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.display-name {
+  font-family: 'Playfair Display', 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 9.2vw, 12rem);
+  line-height: 0.88;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
+}
+
+/* =========================================
+   PAGE 2: WHO AM I — EDITORIAL LAYOUT
+   ========================================= */
+.about-page {
+  background: transparent;
+  position: relative;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+/* Full-height wrapper — Top Content + Bottom Row */
+.about-wrap {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* Editorial column: balanced padding across full width */
+.about-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: clamp(36px, 5.5vh, 64px) clamp(36px, 5vw, 84px);
+}
+
+/* ---- TOP: Title + Bio + Achievements ---- */
+.about-top {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vh, 20px);
+  width: 100%;
+}
+
+.about-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.8rem, 7.5vw, 8.5rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+}
+
+.about-bio {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(13px, 1.05vw, 15px);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.58);
+  max-width: 880px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* ---- ACHIEVEMENTS: Aceternity Glowing Effect Demo ---- */
+.about-achievements {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 330px));
+  gap: clamp(14px, 1.8vw, 22px);
+  margin-top: clamp(10px, 1.6vh, 20px);
+}
+
+/* Outer Card Container with Glow tracking */
+.glowing-card-wrapper {
+  position: relative;
+  border-radius: 20px;
+  background: #0d0d11;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1px;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+}
+
+/* Background Blur Glow */
+.glowing-card-wrapper .glow-blur {
+  position: absolute;
+  inset: -12px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  filter: blur(18px);
+  background: radial-gradient(200px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+      rgba(255, 255, 255, 0.3) 0%,
+      transparent 70%);
+  z-index: 0;
+}
+
+/* Sharp Dynamic Border Glow */
+.glowing-card-wrapper .glow-border {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(240px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+      rgba(255, 255, 255, 0.75) 0%,
+      rgba(255, 255, 255, 0.2) 35%,
+      transparent 70%);
+  z-index: 1;
+}
+
+.glowing-card-wrapper:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.glowing-card-wrapper:hover .glow-blur,
+.glowing-card-wrapper:hover .glow-border {
+  opacity: 1;
+}
+
+/* Inner Card (Dark background with Spotlight + Dot Matrix Reveal) */
+.glowing-card-inner {
+  position: relative;
+  z-index: 2;
+  border-radius: 19px;
+  background: #08080b;
+  padding: 22px 24px;
+  min-height: 165px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+
+/* Aceternity Card Spotlight: Background Radial Glow */
+.glowing-card-inner .inner-spotlight {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(280px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.02) 40%,
+      transparent 80%);
+  z-index: 1;
+}
+
+/* Aceternity Card Spotlight: Dynamic Canvas Dot Matrix Reveal */
+.glowing-card-inner .inner-dots {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.38) 1.2px, transparent 1.2px);
+  background-size: 14px 14px;
+  -webkit-mask-image: radial-gradient(220px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+      black 0%,
+      transparent 75%);
+  mask-image: radial-gradient(220px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+      black 0%,
+      transparent 75%);
+  z-index: 1;
+}
+
+.glowing-card-wrapper:hover .inner-spotlight,
+.glowing-card-wrapper:hover .inner-dots {
+  opacity: 1;
+}
+
+/* Icon Box at Top Left */
+.glow-icon-box {
+  position: relative;
+  z-index: 3;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.glowing-card-wrapper:hover .glow-icon-box {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Typography matching Aceternity Glowing Effect Demo */
+.glow-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.glow-title {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: clamp(16px, 1.15vw, 18px);
+  font-weight: 600;
+  color: #f4f4f5;
+  letter-spacing: -0.035em;
+  line-height: 1.3;
+}
+
+.glow-desc {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: clamp(12.5px, 0.9vw, 13.5px);
+  font-weight: 400;
+  color: #71717a;
+  line-height: 1.55;
+}
+
+/* ---- BOTTOM: Email on Left, Connect on Right ---- */
+.about-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  padding-top: clamp(16px, 2.5vh, 28px);
+}
+
+.bottom-reach {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.reach-label {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(11px, 0.9vw, 13px);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.reach-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.5rem, 2.8vw, 2.6rem);
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  transition: color 0.18s ease;
+}
+
+.reach-email:hover {
+  color: #ffffff;
+}
+
+.reach-arrow {
+  font-size: 0.65em;
+  color: rgba(255, 255, 255, 0.35);
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+
+.reach-email:hover .reach-arrow {
+  color: rgba(255, 255, 255, 0.8);
+  transform: translate(2px, -2px);
+}
+
+/* Connect links (Bottom-Right, Clean Text, No Background, No Underline) */
+.bottom-connect {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 28px);
+  padding-bottom: 4px;
+}
+
+.connect-link {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(12px, 0.9vw, 13.5px);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  background: transparent;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.connect-link:hover {
+  color: #ffffff;
+  opacity: 1;
+}
+
+/* =========================================
+   PAGE 2: ACETERNITY ANIMATED TOOLTIP DEMO
+   ========================================= */
+.skills-tooltip-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: clamp(8px, 1.4vh, 18px);
+  position: relative;
+  z-index: 20;
+}
+
+.skills-tooltip-label {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(10.5px, 0.85vw, 12px);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.animated-tooltip-row {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 10px 0 4px 0;
+}
+
+.animated-tooltip-item {
+  position: relative;
+  margin-right: -13px;
+  /* Signature overlapping circles from Aceternity demo */
+  transition: z-index 0s;
+}
+
+.animated-tooltip-item:last-child {
+  margin-right: 0;
+}
+
+/* Crisp white border circular avatar */
+.animated-tooltip-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  background: #0d0d12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.65);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.animated-tooltip-avatar img {
+  width: 27px;
+  height: 27px;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+
+.animated-tooltip-avatar img.invert-white {
+  filter: invert(1);
+}
+
+/* Hover avatar: scale up and elevate z-index */
+.animated-tooltip-item:hover {
+  z-index: 70;
+}
+
+.animated-tooltip-item:hover .animated-tooltip-avatar {
+  transform: scale(1.16);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.95), 0 0 16px rgba(255, 255, 255, 0.25);
+}
+
+/* Floating Card / Popup Tooltip (Aceternity Spring Animated) */
+.animated-tooltip-popup {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(calc(-50% + var(--tx, 0px))) translateY(12px) scale(0.6) rotate(var(--rot, 0deg));
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  padding: 8px 18px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.85), 0 8px 10px -6px rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  white-space: nowrap;
+  transform-origin: center bottom;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.animated-tooltip-item:hover .animated-tooltip-popup {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(calc(-50% + var(--tx, 0px))) translateY(0) scale(1) rotate(var(--rot, 0deg));
+}
+
+/* Sleek Silver Metallic Accent Lines */
+.tooltip-accent-emerald {
+  position: absolute;
+  bottom: -1px;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(160, 170, 185, 0.4) 20%, rgba(220, 228, 240, 0.85) 50%, rgba(160, 170, 185, 0.4) 80%, transparent);
+  box-shadow: 0 1px 6px rgba(255, 255, 255, 0.25);
+  z-index: 2;
+}
+
+.tooltip-accent-sky {
+  position: absolute;
+  bottom: -1px;
+  left: 25%;
+  width: 50%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.45);
+  z-index: 3;
+}
+
+.tooltip-name {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  position: relative;
+  z-index: 1;
+}
+
+.tooltip-designation {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 11px;
+  line-height: 1.25;
+  margin-top: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .about-page {
+    overflow-y: auto !important;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .about-wrap {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: auto;
+    overflow-y: visible;
+  }
+
+  .animated-tooltip-row {
+    flex-wrap: wrap;
+    row-gap: 12px;
+    padding: 6px 0;
+  }
+
+  .animated-tooltip-avatar {
+    width: 44px;
+    height: 44px;
+  }
+
+  .animated-tooltip-avatar img {
+    width: 23px;
+    height: 23px;
+  }
+
+  .animated-tooltip-item {
+    margin-right: -10px;
+  }
+
+  .about-left {
+    padding: clamp(28px, 4vh, 44px) 20px clamp(44px, 6vh, 64px) 20px;
+    gap: 28px;
+    justify-content: flex-start;
+    height: auto;
+  }
+
+  .about-heading {
+    font-size: clamp(3rem, 13vw, 5rem);
+  }
+
+  .about-bio {
+    max-width: 100%;
+    font-size: 13.5px;
+    line-height: 1.6;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .about-achievements {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .glowing-card-inner {
+    padding: 18px 20px;
+    min-height: 140px;
+  }
+
+  .about-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    padding-bottom: 24px;
+  }
+
+  .reach-email {
+    font-size: clamp(1.3rem, 5.5vw, 1.9rem);
+    word-break: break-all;
+  }
+
+  .bottom-connect {
+    flex-wrap: wrap;
+    gap: 14px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-layout {
+    padding: 0 16px 14px 16px;
+  }
+
+  .meta-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 0 2px;
+    width: 100%;
+  }
+
+  .bio-text {
+    width: 100%;
+    max-width: 100%;
+    font-size: 11.5px;
+    line-height: 1.45;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .pixel-cv-btn {
+    align-self: flex-end;
+    font-size: 11px;
+    padding: 8px 16px;
+    box-shadow: 2px 2px 0px rgba(255, 255, 255, 0.4);
+  }
+
+  .display-name {
+    font-size: clamp(1.8rem, 8.6vw, 3.2rem);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* =========================================
+   PAGE 3: SELECTED PROJECTS (ACETERNITY 3D MARQUEE)
+   ========================================= */
+.projects-page {
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  contain: paint;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+/* Vignettes for dark atmospheric blending */
+.projects-vignette {
+  position: absolute;
+  pointer-events: none;
+  z-index: 15;
+}
+
+.vignette-top {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 25vh;
+  background: linear-gradient(to bottom, #050507 10%, transparent);
+}
+
+.vignette-bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25vh;
+  background: linear-gradient(to top, #050507 10%, transparent);
+}
+
+.vignette-left {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 42vw;
+  background: linear-gradient(to right, #050507 45%, rgba(5, 5, 7, 0.7) 70%, transparent);
+}
+
+/* Floating Editorial Header on Left */
+.projects-header-overlay {
+  position: absolute;
+  top: clamp(36px, 6vh, 64px);
+  left: clamp(32px, 5vw, 76px);
+  max-width: 460px;
+  z-index: 25;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.6vh, 16px);
+}
+
+.projects-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.projects-tag-line {
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.projects-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.8rem, 7.5vw, 8rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+}
+
+.projects-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(13px, 1.05vw, 15px);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 420px;
+}
+
+.projects-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  width: fit-content;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  font-family: 'Inter', sans-serif;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 6px;
+}
+
+.hint-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+}
+
+/* =========================================
+   ACETERNITY 3D MARQUEE STAGE
+   ========================================= */
+.marquee-3d-stage {
+  position: absolute;
+  top: 50%;
+  left: 56%;
+  transform: translate(-50%, -50%) rotateX(46deg) rotateY(0deg) rotateZ(-30deg);
+  transform-style: preserve-3d;
+  width: 140vw;
+  height: 155vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.marquee-3d-grid {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.marquee-column {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  width: 310px;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.marquee-track {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  will-change: transform;
+}
+
+/* Infinite Scrolling Animations */
+.col-up .marquee-track {
+  animation: marqueeScrollUp 40s linear infinite;
+}
+
+.col-down .marquee-track {
+  animation: marqueeScrollDown 45s linear infinite;
+}
+
+/* Pause Marquee on Hover (Aceternity interactive pattern) */
+.marquee-3d-stage:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScrollUp {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes marqueeScrollDown {
+  0% {
+    transform: translateY(-50%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   PROJECT CARD DESIGN
+   ========================================= */
+.proj-card {
+  background: rgba(14, 14, 19, 0.9);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+}
+
+.proj-card:hover {
+  transform: translateY(-14px);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 28px 50px rgba(0, 0, 0, 0.95), 0 0 20px rgba(255, 255, 255, 0.08);
+  z-index: 50;
+}
+
+.proj-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.proj-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 3px 9px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.proj-arrow {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.proj-card:hover .proj-arrow {
+  color: #ffffff;
+  transform: translate(2px, -2px);
+}
+
+.proj-name {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(17px, 1.25vw, 19px);
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+.proj-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.proj-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.proj-tag {
+  font-family: 'Inter', monospace, sans-serif;
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.proj-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.proj-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 7px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.proj-btn-primary {
+  background: rgba(255, 255, 255, 0.95);
+  color: #050507;
+}
+
+.proj-btn-primary:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+.proj-btn-ghost {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.proj-btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* =========================================
+   PROJECT 3D FLOATING PREVIEW CARD OVERLAY
+   ========================================= */
+
+/* Full-screen overlay (hidden) */
+.proj-preview-overlay {
+  display: none !important;
+}
+
+/* 3D transform wrapper — positions & animates the card */
+.proj-preview-card {
+  position: absolute;
+  width: 310px;
+  /* same as .marquee-column */
+  transform-style: preserve-3d;
+  transform: perspective(900px) rotateX(0deg) rotateY(0deg) scale(0.84) translateY(20px);
+  opacity: 0;
+  transition:
+    opacity 0.30s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.36s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  pointer-events: none;
+  /* box-shadow applied here so it doesn't duplicate with .proj-card */
+  filter: drop-shadow(0 32px 64px rgba(0, 0, 0, 0.95));
+}
+
+.proj-preview-card.is-visible {
+  opacity: 1;
+  transform: perspective(900px) rotateX(0deg) rotateY(0deg) scale(1) translateY(0px);
+}
+
+/* Inner proj-card: re-use all existing styles, just override hover transform */
+.proj-card--preview {
+  cursor: default;
+  pointer-events: auto;
+  /* brighten slightly so it pops against the marquee background */
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 24px 48px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Disable the default marquee hover transform — tilt is handled by JS */
+.proj-card--preview:hover {
+  transform: none !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 32px 64px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* =========================================
+   PAGE 3 RESPONSIVE (MOBILE & TABLET)
+   ========================================= */
+@media (max-width: 900px) {
+  .vignette-left {
+    width: 100vw;
+    height: 40vh;
+    background: linear-gradient(to bottom, #050507 60%, transparent);
+  }
+
+  .projects-header-overlay {
+    top: 24px;
+    left: 20px;
+    right: 20px;
+    max-width: 100%;
+    pointer-events: auto;
+  }
+
+  .projects-title {
+    font-size: clamp(3rem, 12vw, 4.8rem);
+  }
+
+  .marquee-3d-stage {
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%) rotateX(18deg) rotateY(0deg) rotateZ(-6deg);
+    width: 100vw;
+    height: 130vh;
+  }
+
+  /* Single centered column on mobile so cards never get cut off on the right */
+  .marquee-column:first-child,
+  .marquee-column:last-child {
+    display: none;
+  }
+
+  .marquee-column {
+    width: min(320px, 86vw);
+    gap: 18px;
+  }
+
+  .marquee-track {
+    gap: 18px;
+  }
+
+  .proj-card {
+    width: 100%;
+    padding: 20px 22px;
+    border-radius: 18px;
+  }
+}

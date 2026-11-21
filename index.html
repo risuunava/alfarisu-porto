@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — ALFARISI / RISU</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+
+<body>
+  <!-- Three.js Canvas Container (Fixed in background across all horizontal pages) -->
+  <div id="webgl-canvas-container"></div>
+
+  <!-- Horizontal Scrollable Viewport -->
+  <div class="horizontal-viewport" id="horizontal-viewport">
+
+    <!-- PAGE 1: HERO / PORTRAIT LANDING -->
+    <section class="page-section hero-page" id="page-hero">
+      <main class="hero-layout">
+        <div class="meta-row">
+          <!-- Left narrative bio -->
+          <div class="bio-text">
+            <p>Software engineer with hands-on experience across web, mobile and applied AI, from internal tools to
+              products used by real teams. Scroll to explore the work.</p>
+          </div>
+
+          <!-- Right Download CV CTA with Pixel Hover Effect -->
+          <button type="button" class="pixel-cv-btn" id="btn-download-cv">
+            <span class="pixel-cv-mosaic"></span>
+            <span class="pixel-cv-label">Download CV</span>
+          </button>
+        </div>
+
+        <!-- Giant serif italic title at bottom centered -->
+        <div class="name-wrap">
+          <h1 class="display-name">ALFARISI / RISU</h1>
+        </div>
+      </main>
+    </section>
+
+    <!-- PAGE 2: WHO AM I -->
+    <section class="page-section about-page" id="page-about">
+      <div class="about-wrap">
+
+        <!-- LEFT: Title + Bio + Achievements + Bottom -->
+        <div class="about-left">
+
+          <!-- TOP: Title + Bio + Achievements -->
+          <div class="about-top">
+            <h1 class="about-heading">WHO AM I?</h1>
+            <p class="about-bio">
+              I'm a software engineer and Informatics student with a GPA of 3.72/4.00. I focus on building productivity
+              web applications and freelance websites for businesses, turning ideas into polished, reliable products.
+              Alongside development, I actively research machine learning and AI, and apply those findings directly to
+              my projects. I care about clean code, thoughtful user experience, and delivering work that creates real
+              value for users and clients. Scroll to see featured work.
+            </p>
+
+            <!-- Achievements: Aceternity Glowing Effect + Card Spotlight -->
+            <div class="about-achievements">
+
+              <!-- Card 1: 13 Badges -->
+              <div class="glowing-card-wrapper">
+                <div class="glow-blur"></div>
+                <div class="glow-border"></div>
+                <div class="glowing-card-inner">
+                  <div class="inner-spotlight"></div>
+                  <div class="inner-dots"></div>
+                  <div class="glow-icon-box">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                      </path>
+                      <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                      <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                  </div>
+                  <div class="glow-content">
+                    <h3 class="glow-title">13 Google Cloud Badges</h3>
+                    <p class="glow-desc">Hands-on skill badges across Cloud Architecture, Data & Applied AI.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: Google Edu -->
+              <div class="glowing-card-wrapper">
+                <div class="glow-blur"></div>
+                <div class="glow-border"></div>
+                <div class="glowing-card-inner">
+                  <div class="inner-spotlight"></div>
+                  <div class="inner-dots"></div>
+                  <div class="glow-icon-box">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path
+                        d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+                    </svg>
+                  </div>
+                  <div class="glow-content">
+                    <h3 class="glow-title">Google Edu by REFO</h3>
+                    <p class="glow-desc">Certified educator credential & digital transformation training.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3: IT Support -->
+              <div class="glowing-card-wrapper">
+                <div class="glow-blur"></div>
+                <div class="glow-border"></div>
+                <div class="glowing-card-inner">
+                  <div class="inner-spotlight"></div>
+                  <div class="inner-dots"></div>
+                  <div class="glow-icon-box">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="3"></circle>
+                      <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                      </path>
+                    </svg>
+                  </div>
+                  <div class="glow-content">
+                    <h3 class="glow-title">Intern IT Support</h3>
+                    <p class="glow-desc">Workstation architecture, networking & enterprise tech solutions.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- TECH STACK: Aceternity Animated Tooltip Demo -->
+            <div class="skills-tooltip-container">
+              <span class="skills-tooltip-label">TECH STACK</span>
+              <div class="animated-tooltip-row" id="animated-tooltip-row">
+
+                <!-- 1. Laravel -->
+                <div class="animated-tooltip-item">
+                  <div class="animated-tooltip-popup">
+                    <div class="tooltip-accent-emerald"></div>
+                    <div class="tooltip-accent-sky"></div>
+                    <div class="tooltip-name">Laravel</div>
+                    <div class="tooltip-designation">Web Application Framework</div>
+                  </div>
+                  <div class="animated-tooltip-avatar">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg"
+                      alt="Laravel" />
+                  </div>
+                </div>
+
+                <!-- 2. PHP -->
+                <div class="animated-tooltip-item">
+                  <div class="animated-tooltip-popup">
+                    <div class="tooltip-accent-emerald"></div>
+                    <div class="tooltip-accent-sky"></div>
+                    <div class="tooltip-name">PHP</div>
+                    <div class="tooltip-designation">Backend Language</div>
+                  </div>
+                  <div class="animated-tooltip-avatar">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
+                      alt="PHP" />
+                  </div>
+                </div>
+
+                <!-- 3. Supabase -->
+                <div class="animated-tooltip-item">
+                  <div class="animated-tooltip-popup">
+                    <div class="tooltip-accent-emerald"></div>
+                    <div class="tooltip-accent-sky"></div>
+                    <div class="tooltip-name">Supabase</div>
+                    <div class="tooltip-designation">BaaS & PostgreSQL</div>
+                  </div>
+                  <div class="animated-tooltip-avatar">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg"
+                      alt="Supabase" />
+                  </div>
+                </div>
+
+                <!-- 4. Firebase -->
+                <div class="animated-tooltip-item">
+                  <div class="animated-tooltip-popup">
+                    <div class="tooltip-accent-emerald"></div>
+                    <div class="tooltip-accent-sky"></div>
+                    <div class="tooltip-name">Firebase</div>
+                    <div class="tooltip-designation">Realtime DB & Cloud Auth</div>
+                  </div>
+                  <div class="animated-tooltip-avatar">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg"
+                      alt="Firebase" />
+                  </div>
+                </div>
+
+                <!-- 5. Git -->
+                <div class="animated-tooltip-item">
+                  <div class="animated-tooltip-popup">
+                    <div class="tooltip-accent-emerald"></div>
+                    <div class="tooltip-accent-sky"></div>
+                    <div class="tooltip-name">Git</div>
+                    <div class="tooltip-designation">Version Control</div>
+                  </div>
+                  <div class="animated-tooltip-avatar">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+                      alt="Git" />
+                  </div>
+                </div>
+
+                <!-- 6. Capacitor -->
+                <div class="animated-tooltip-item">
+                  <div class="animated-tooltip-popup">
+                    <div class="tooltip-accent-emerald"></div>
+                    <div class="tooltip-accent-sky"></div>
+                    <div class="tooltip-name">Capacitor</div>
+                    <div class="tooltip-designation">Cross-Platform Mobile</div>
+                  </div>
+                  <div class="animated-tooltip-avatar">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/capacitor/capacitor-original.svg"
+                      alt="Capacitor" />
+                  </div>
+                </div>
+
+                <!-- 7. Flutter -->
+                <div class="animated-tooltip-item">
+                  <div class="animated-tooltip-popup">
+                    <div class="tooltip-accent-emerald"></div>
+                    <div class="tooltip-accent-sky"></div>
+                    <div class="tooltip-name">Flutter</div>
+                    <div class="tooltip-designation">Mobile App Framework</div>
+                  </div>
+                  <div class="animated-tooltip-avatar">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg"
+                      alt="Flutter" />
+                  </div>
+                </div>
+
+                <!-- 8. Python -->
+                <div class="animated-tooltip-item">
+                  <div class="animated-tooltip-popup">
+                    <div class="tooltip-accent-emerald"></div>
+                    <div class="tooltip-accent-sky"></div>
+                    <div class="tooltip-name">Python</div>
+                    <div class="tooltip-designation">AI & Machine Learning</div>
+                  </div>
+                  <div class="animated-tooltip-avatar">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
+                      alt="Python" />
+                  </div>
+                </div>
+
+                <!-- 9. Google Cloud -->
+                <div class="animated-tooltip-item">
+                  <div class="animated-tooltip-popup">
+                    <div class="tooltip-accent-emerald"></div>
+                    <div class="tooltip-accent-sky"></div>
+                    <div class="tooltip-name">Google Cloud</div>
+                    <div class="tooltip-designation">Cloud Architecture & AI</div>
+                  </div>
+                  <div class="animated-tooltip-avatar">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg"
+                      alt="Google Cloud" />
+                  </div>
+                </div>
+
+                <!-- 10. Next.js -->
+                <div class="animated-tooltip-item">
+                  <div class="animated-tooltip-popup">
+                    <div class="tooltip-accent-emerald"></div>
+                    <div class="tooltip-accent-sky"></div>
+                    <div class="tooltip-name">Next.js</div>
+                    <div class="tooltip-designation">Fullstack React Framework</div>
+                  </div>
+                  <div class="animated-tooltip-avatar">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"
+                      alt="Next.js" class="invert-white" />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- BOTTOM: Email on Left, Connect on Right -->
+          <div class="about-bottom">
+            <div class="bottom-reach">
+              <span class="reach-label">Reach out at</span>
+              <a href="mailto:risuunava@gmail.com" class="reach-email">
+                risuunava@gmail.com <span class="reach-arrow">↗</span>
+              </a>
+            </div>
+
+            <div class="bottom-connect">
+              <a href="https://github.com/alfarisi" target="_blank" class="connect-link">GitHub</a>
+              <a href="https://linkedin.com/in/alfarisi" target="_blank" class="connect-link">LinkedIn</a>
+              <a href="https://www.cloudskillsboost.google" target="_blank" class="connect-link">Google Skills</a>
+              <a href="https://instagram.com" target="_blank" class="connect-link">Instagram</a>
+            </div>
+          </div>
+
+        </div><!-- /about-left -->
+
+      </div>
+    </section>
+
+    <!-- PAGE 3: SELECTED PROJECTS (ACETERNITY 3D MARQUEE) -->
+    <section class="page-section projects-page" id="page-projects">
+
+      <!-- Vignettes for ambient 3D depth fading into black background -->
+      <div class="projects-vignette vignette-top"></div>
+      <div class="projects-vignette vignette-bottom"></div>
+      <div class="projects-vignette vignette-left"></div>
+
+      <!-- Floating Editorial Header -->
+      <div class="projects-header-overlay">
+        <h2 class="projects-title">PROJECTS</h2>
+        <p class="projects-subtitle">
+          A selection of things I've built: web apps, mobile apps, and AI-driven systems.
+        </p>
+      </div>
+
+      <!-- 3D Perspective Marquee Stage -->
+      <div class="marquee-3d-stage" id="marquee-stage">
+        <div class="marquee-3d-grid">
+
+          <!-- COLUMN 1 (Scrolls Up) -->
+          <div class="marquee-column col-up">
+            <div class="marquee-track">
+
+              <!-- Notchi -->
+              <article class="proj-card" data-url="https://www.notchi.my.id/">
+                <div class="proj-card-header">
+                  <span class="proj-badge">Productivity</span>
+                  <span class="proj-arrow">↗</span>
+                </div>
+                <h3 class="proj-name">Notchi</h3>
+                <p class="proj-desc">Dynamic Island & notch productivity UI overlay designed for modern web workflows.
+                </p>
+                <div class="proj-tags">
+                  <span class="proj-tag">TypeScript</span>
+                  <span class="proj-tag">Next.js</span>
+                  <span class="proj-tag">Tailwind</span>
+                </div>
+                <div class="proj-card-actions">
+                  <a href="https://www.notchi.my.id/" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-primary" onclick="event.stopPropagation()">
+                    Live Site ↗
+                  </a>
+                  <a href="https://github.com/Risunity/Notchi" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-ghost" onclick="event.stopPropagation()">
+                    GitHub
+                  </a>
+                </div>
+              </article>
+
+              <!-- Helpdesk UNSAP v2 -->
+              <article class="proj-card" data-url="https://helpdesk-unsap-v2.vercel.app/">
+                <div class="proj-card-header">
+                  <span class="proj-badge">Enterprise</span>
+                  <span class="proj-arrow">↗</span>
+                </div>
+                <h3 class="proj-name">Helpdesk UNSAP v2</h3>
+                <p class="proj-desc">Campus ticketing and academic issue tracking system with automated workflows.</p>
+                <div class="proj-tags">
+                  <span class="proj-tag">Fullstack</span>
+                  <span class="proj-tag">React</span>
+                  <span class="proj-tag">PostgreSQL</span>
+                </div>
+                <div class="proj-card-actions">
+                  <a href="https://helpdesk-unsap-v2.vercel.app/" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-primary" onclick="event.stopPropagation()">
+                    Live Site ↗</a>
+                  <a href="https://github.com/risuunava/helpdesk-unsap-v2" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-ghost" onclick="event.stopPropagation()">
+                    GitHub
+                  </a>
+                </div>
+              </article>
+
+              <!-- Attendexa -->
+              <article class="proj-card" data-url="https://attendexa-mauve.vercel.app/login">
+                <div class="proj-card-header">
+                  <span class="proj-badge">Management</span>
+                  <span class="proj-arrow">↗</span>
+                </div>
+                <h3 class="proj-name">Attendexa</h3>
+                <p class="proj-desc">Smart presence and employee attendance tracking platform with role analytics.</p>
+                <div class="proj-tags">
+                  <span class="proj-tag">Web App</span>
+                  <span class="proj-tag">Supabase</span>
+                  <span class="proj-tag">Auth</span>
+                </div>
+                <div class="proj-card-actions">
+                  <a href="https://attendexa-mauve.vercel.app/login" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-primary" onclick="event.stopPropagation()">
+                    Live Site ↗</a>
+                  <a href="https://github.com/Risunity/attendexa" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-ghost" onclick="event.stopPropagation()">
+                    GitHub
+                  </a>
+                </div>
+              </article>
+
+              <!-- My Ayumi -->
+              <article class="proj-card" data-url="https://github.com/risuunava/my-ayumi">
+                <div class="proj-card-header">
+                  <span class="proj-badge">Applied AI</span>
+                  <span class="proj-arrow">↗</span>
+                </div>
+                <h3 class="proj-name">My Ayumi</h3>
+                <p class="proj-desc">Desktop virtual assistant and intelligent AI companion for personal productivity.
+                </p>
+                <div class="proj-tags">
+                  <span class="proj-tag">Python</span>
+                  <span class="proj-tag">AI / LLM</span>
+                  <span class="proj-tag">Desktop</span>
+                </div>
+                <div class="proj-card-actions">
+                  <a href="https://github.com/risuunava/my-ayumi" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-primary" onclick="event.stopPropagation()">
+                    Repository ↗
+                  </a>
+                </div>
+              </article>
+
+              <!-- DUPLICATE SET FOR SEAMLESS INFINITE MARQUEE -->
+              <article class="proj-card" data-url="https://www.notchi.my.id/">
+                <div class="proj-card-header">
+                  <span class="proj-badge">Productivity</span>
+                  <span class="proj-arrow">↗</span>
+                </div>
+                <h3 class="proj-name">Notchi</h3>
+                <p class="proj-desc">Dynamic Island & notch productivity UI overlay designed for modern web workflows.
+                </p>
+                <div class="proj-tags">
+                  <span class="proj-tag">TypeScript</span>
+                  <span class="proj-tag">Next.js</span>
+                  <span class="proj-tag">Tailwind</span>
+                </div>
+                <div class="proj-card-actions">
+                  <a href="https://www.notchi.my.id/" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-primary" onclick="event.stopPropagation()">
+                    Live Site ↗
+                  </a>
+                  <a href="https://github.com/Risunity/Notchi" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-ghost" onclick="event.stopPropagation()">
+                    GitHub
+                  </a>
+                </div>
+              </article>
+
+              <article class="proj-card" data-url="https://helpdesk-unsap-v2.vercel.app/">
+                <div class="proj-card-header">
+                  <span class="proj-badge">Enterprise</span>
+                  <span class="proj-arrow">↗</span>
+                </div>
+                <h3 class="proj-name">Helpdesk UNSAP v2</h3>
+                <p class="proj-desc">Campus ticketing and academic issue tracking system with automated workflows.</p>
+                <div class="proj-tags">
+                  <span class="proj-tag">Fullstack</span>
+                  <span class="proj-tag">React</span>
+                  <span class="proj-tag">PostgreSQL</span>
+                </div>
+                <div class="proj-card-actions">
+                  <a href="https://helpdesk-unsap-v2.vercel.app/" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-primary" onclick="event.stopPropagation()">
+                    Live Site ↗</a>
+                  <a href="https://github.com/risuunava/helpdesk-unsap-v2" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-ghost" onclick="event.stopPropagation()">
+                    GitHub
+                  </a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <!-- COLUMN 2 (Scrolls Down) -->
+          <div class="marquee-column col-down">
+            <div class="marquee-track">
+
+              <!-- Attendexa -->
+              <article class="proj-card" data-url="https://attendexa-mauve.vercel.app/login">
+                <div class="proj-card-header">
+                  <span class="proj-badge">Management</span>
+                  <span class="proj-arrow">↗</span>
+                </div>
+                <h3 class="proj-name">Attendexa</h3>
+                <p class="proj-desc">Smart presence and employee attendance tracking platform with role analytics.</p>
+                <div class="proj-tags">
+                  <span class="proj-tag">Web App</span>
+                  <span class="proj-tag">Supabase</span>
+                  <span class="proj-tag">Auth</span>
+                </div>
+                <div class="proj-card-actions">
+                  <a href="https://attendexa-mauve.vercel.app/login" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-primary" onclick="event.stopPropagation()">
+                    Live Site ↗</a>
+                  <a href="https://github.com/Risunity/attendexa" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-ghost" onclick="event.stopPropagation()">
+                    GitHub
+                  </a>
+                </div>
+              </article>
+
+              <!-- My Ayumi -->
+              <article class="proj-card" data-url="https://github.com/risuunava/my-ayumi">
+                <div class="proj-card-header">
+                  <span class="proj-badge">Applied AI</span>
+                  <span class="proj-arrow">↗</span>
+                </div>
+                <h3 class="proj-name">My Ayumi</h3>
+                <p class="proj-desc">Desktop virtual assistant and intelligent AI companion for personal productivity.
+                </p>
+                <div class="proj-tags">
+                  <span class="proj-tag">Python</span>
+                  <span class="proj-tag">AI / LLM</span>
+                  <span class="proj-tag">Desktop</span>
+                </div>
+                <div class="proj-card-actions">
+                  <a href="https://github.com/risuunava/my-ayumi" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-primary" onclick="event.stopPropagation()">
+                    Repository ↗
+                  </a>
+                </div>
+              </article>
+
+              <!-- Notchi -->
+              <article class="proj-card" data-url="https://www.notchi.my.id/">
+                <div class="proj-card-header">
+                  <span class="proj-badge">Productivity</span>
+                  <span class="proj-arrow">↗</span>
+                </div>
+                <h3 class="proj-name">Notchi</h3>
+                <p class="proj-desc">Dynamic Island & notch productivity UI overlay designed for modern web workflows.
+                </p>
+                <div class="proj-tags">
+                  <span class="proj-tag">TypeScript</span>
+                  <span class="proj-tag">Next.js</span>
+                  <span class="proj-tag">Tailwind</span>
+                </div>
+                <div class="proj-card-actions">
+                  <a href="https://www.notchi.my.id/" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-primary" onclick="event.stopPropagation()">
+                    Live Site ↗
+                  </a>
+                  <a href="https://github.com/Risunity/Notchi" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-ghost" onclick="event.stopPropagation()">
+                    GitHub
+                  </a>
+                </div>
+              </article>
+
+              <!-- Helpdesk UNSAP v2 -->
+              <article class="proj-card" data-url="https://helpdesk-unsap-v2.vercel.app/">
+                <div class="proj-card-header">
+                  <span class="proj-badge">Enterprise</span>
+                  <span class="proj-arrow">↗</span>
+                </div>
+                <h3 class="proj-name">Helpdesk UNSAP v2</h3>
+                <p class="proj-desc">Campus ticketing and academic issue tracking system with automated workflows.</p>
+                <div class="proj-tags">
+                  <span class="proj-tag">Fullstack</span>
+                  <span class="proj-tag">React</span>
+                  <span class="proj-tag">PostgreSQL</span>
+                </div>
+                <div class="proj-card-actions">
+                  <a href="https://helpdesk-unsap-v2.vercel.app/" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-primary" onclick="event.stopPropagation()">
+                    Live Site ↗</a>
+                  <a href="https://github.com/risuunava/helpdesk-unsap-v2" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-ghost" onclick="event.stopPropagation()">
+                    GitHub
+                  </a>
+                </div>
+              </article>
+
+              <!-- DUPLICATE SET -->
+              <article class="proj-card" data-url="https://attendexa-mauve.vercel.app/login">
+                <div class="proj-card-header">
+                  <span class="proj-badge">Management</span>
+                  <span class="proj-arrow">↗</span>
+                </div>
+                <h3 class="proj-name">Attendexa</h3>
+                <p class="proj-desc">Smart presence and employee attendance tracking platform with role analytics.</p>
+                <div class="proj-tags">
+                  <span class="proj-tag">Web App</span>
+                  <span class="proj-tag">Supabase</span>
+                  <span class="proj-tag">Auth</span>
+                </div>
+                <div class="proj-card-actions">
+                  <a href="https://attendexa-mauve.vercel.app/login" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-primary" onclick="event.stopPropagation()">
+                    Live Site ↗</a>
+                  <a href="https://github.com/Risunity/attendexa" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-ghost" onclick="event.stopPropagation()">
+                    GitHub
+                  </a>
+                </div>
+              </article>
+
+              <article class="proj-card" data-url="https://github.com/risuunava/my-ayumi">
+                <div class="proj-card-header">
+                  <span class="proj-badge">Applied AI</span>
+                  <span class="proj-arrow">↗</span>
+                </div>
+                <h3 class="proj-name">My Ayumi</h3>
+                <p class="proj-desc">Desktop virtual assistant and intelligent AI companion for personal productivity.
+                </p>
+                <div class="proj-tags">
+                  <span class="proj-tag">Python</span>
+                  <span class="proj-tag">AI / LLM</span>
+                  <span class="proj-tag">Desktop</span>
+                </div>
+                <div class="proj-card-actions">
+                  <a href="https://github.com/risuunava/my-ayumi" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-primary" onclick="event.stopPropagation()">
+                    Repository ↗
+                  </a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <!-- COLUMN 3 (Scrolls Up) -->
+          <div class="marquee-column col-up">
+            <div class="marquee-track">
+
+              <!-- Helpdesk UNSAP v2 -->
+              <article class="proj-card" data-url="https://helpdesk-unsap-v2.vercel.app/">
+                <div class="proj-card-header">
+                  <span class="proj-badge">Enterprise</span>
+                  <span class="proj-arrow">↗</span>
+                </div>
+                <h3 class="proj-name">Helpdesk UNSAP v2</h3>
+                <p class="proj-desc">Campus ticketing and academic issue tracking system with automated workflows.</p>
+                <div class="proj-tags">
+                  <span class="proj-tag">Fullstack</span>
+                  <span class="proj-tag">React</span>
+                  <span class="proj-tag">PostgreSQL</span>
+                </div>
+                <div class="proj-card-actions">
+                  <a href="https://helpdesk-unsap-v2.vercel.app/" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-primary" onclick="event.stopPropagation()">
+                    Live Site ↗</a>
+                  <a href="https://github.com/risuunava/helpdesk-unsap-v2" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-ghost" onclick="event.stopPropagation()">
+                    GitHub
+                  </a>
+                </div>
+              </article>
+
+              <!-- Notchi -->
+              <article class="proj-card" data-url="https://www.notchi.my.id/">
+                <div class="proj-card-header">
+                  <span class="proj-badge">Productivity</span>
+                  <span class="proj-arrow">↗</span>
+                </div>
+                <h3 class="proj-name">Notchi</h3>
+                <p class="proj-desc">Dynamic Island & notch productivity UI overlay designed for modern web workflows.
+                </p>
+                <div class="proj-tags">
+                  <span class="proj-tag">TypeScript</span>
+                  <span class="proj-tag">Next.js</span>
+                  <span class="proj-tag">Tailwind</span>
+                </div>
+                <div class="proj-card-actions">
+                  <a href="https://www.notchi.my.id/" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-primary" onclick="event.stopPropagation()">
+                    Live Site ↗
+                  </a>
+                  <a href="https://github.com/Risunity/Notchi" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-ghost" onclick="event.stopPropagation()">
+                    GitHub
+                  </a>
+                </div>
+              </article>
+
+              <!-- My Ayumi -->
+              <article class="proj-card" data-url="https://github.com/risuunava/my-ayumi">
+                <div class="proj-card-header">
+                  <span class="proj-badge">Applied AI</span>
+                  <span class="proj-arrow">↗</span>
+                </div>
+                <h3 class="proj-name">My Ayumi</h3>
+                <p class="proj-desc">Desktop virtual assistant and intelligent AI companion for personal productivity.
+                </p>
+                <div class="proj-tags">
+                  <span class="proj-tag">Python</span>
+                  <span class="proj-tag">AI / LLM</span>
+                  <span class="proj-tag">Desktop</span>
+                </div>
+                <div class="proj-card-actions">
+                  <a href="https://github.com/risuunava/my-ayumi" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-primary" onclick="event.stopPropagation()">
+                    Repository ↗
+                  </a>
+                </div>
+              </article>
+
+              <!-- Attendexa -->
+              <article class="proj-card" data-url="https://attendexa-mauve.vercel.app/login">
+                <div class="proj-card-header">
+                  <span class="proj-badge">Management</span>
+                  <span class="proj-arrow">↗</span>
+                </div>
+                <h3 class="proj-name">Attendexa</h3>
+                <p class="proj-desc">Smart presence and employee attendance tracking platform with role analytics.</p>
+                <div class="proj-tags">
+                  <span class="proj-tag">Web App</span>
+                  <span class="proj-tag">Supabase</span>
+                  <span class="proj-tag">Auth</span>
+                </div>
+                <div class="proj-card-actions">
+                  <a href="https://attendexa-mauve.vercel.app/login" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-primary" onclick="event.stopPropagation()">
+                    Live Site ↗</a>
+                  <a href="https://github.com/Risunity/attendexa" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-ghost" onclick="event.stopPropagation()">
+                    GitHub
+                  </a>
+                </div>
+              </article>
+
+              <!-- DUPLICATE SET -->
+              <article class="proj-card" data-url="https://helpdesk-unsap-v2.vercel.app/">
+                <div class="proj-card-header">
+                  <span class="proj-badge">Enterprise</span>
+                  <span class="proj-arrow">↗</span>
+                </div>
+                <h3 class="proj-name">Helpdesk UNSAP v2</h3>
+                <p class="proj-desc">Campus ticketing and academic issue tracking system with automated workflows.</p>
+                <div class="proj-tags">
+                  <span class="proj-tag">Fullstack</span>
+                  <span class="proj-tag">React</span>
+                  <span class="proj-tag">PostgreSQL</span>
+                </div>
+                <div class="proj-card-actions">
+                  <a href="https://helpdesk-unsap-v2.vercel.app/" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-primary" onclick="event.stopPropagation()">
+                    Live Site ↗</a>
+                  <a href="https://github.com/risuunava/helpdesk-unsap-v2" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-ghost" onclick="event.stopPropagation()">
+                    GitHub
+                  </a>
+                </div>
+              </article>
+
+              <article class="proj-card" data-url="https://www.notchi.my.id/">
+                <div class="proj-card-header">
+                  <span class="proj-badge">Productivity</span>
+                  <span class="proj-arrow">↗</span>
+                </div>
+                <h3 class="proj-name">Notchi</h3>
+                <p class="proj-desc">Dynamic Island & notch productivity UI overlay designed for modern web workflows.
+                </p>
+                <div class="proj-tags">
+                  <span class="proj-tag">TypeScript</span>
+                  <span class="proj-tag">Next.js</span>
+                  <span class="proj-tag">Tailwind</span>
+                </div>
+                <div class="proj-card-actions">
+                  <a href="https://www.notchi.my.id/" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-primary" onclick="event.stopPropagation()">
+                    Live Site ↗
+                  </a>
+                  <a href="https://github.com/Risunity/Notchi" target="_blank" rel="noopener noreferrer"
+                    class="proj-btn proj-btn-ghost" onclick="event.stopPropagation()">
+                    GitHub
+                  </a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- PROJECT PREVIEW CARD (3D Floating Overlay on Hover) -->
+  <div id="proj-preview-overlay" class="proj-preview-overlay" aria-hidden="true">
+    <div id="proj-preview-card" class="proj-preview-card">
+      <article id="proj-preview-inner" class="proj-card proj-card--preview">
+        <div class="proj-card-header">
+          <span id="pv-badge" class="proj-badge"></span>
+          <span id="pv-arrow" class="proj-arrow">↗</span>
+        </div>
+        <h3 id="pv-name" class="proj-name"></h3>
+        <p id="pv-desc" class="proj-desc"></p>
+        <div id="pv-tags" class="proj-tags"></div>
+        <div id="pv-actions" class="proj-card-actions"></div>
+      </article>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
